@@ -1,6 +1,8 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/alanwade2001/spa-common v0.0.0-20210320124417-90debb95929e h1:Y+8V7H3DMHjlznRx1LFAVwRWIHILJq7qorWVk4WyCSU=
-github.com/alanwade2001/spa-common v0.0.0-20210320124417-90debb95929e/go.mod h1:wjvwgfiepE9+qsOBvMUG5ANipuXS9TIUlCjJFV8MZ6I=
+github.com/alanwade2001/spa-common v0.0.0-20210320153948-d0242a616ef9 h1:7VsynzSTNbq4e4LISlxaNE6ytnS6ZsAT7q0wYgQT3ys=
+github.com/alanwade2001/spa-common v0.0.0-20210320153948-d0242a616ef9/go.mod h1:5+Mf0+lla5OHZmWi4IKDtLwX8q+ijVLMB5w4jv4JSr4=
+github.com/alanwade2001/spa-common v1.1.2 h1:lrR8QgbCtXp8X+xfHYpvNkY4EtxOBhoGkhQIkwxV6e0=
+github.com/alanwade2001/spa-common v1.1.2/go.mod h1:5+Mf0+lla5OHZmWi4IKDtLwX8q+ijVLMB5w4jv4JSr4=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
 github.com/aws/aws-sdk-go v1.34.28/go.mod h1:H7NKnBqNVzoTJpGfLrQkkD+ytBA93eiDYi/+8rV9s48=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

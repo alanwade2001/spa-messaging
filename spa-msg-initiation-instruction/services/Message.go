@@ -8,7 +8,7 @@ import (
 	"github.com/alanwade2001/spa-messaging/spa-msg-initiation-instruction/types"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/bsoncodec"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 
 	mgo "github.com/alanwade2001/spa-common/mongo"
 )
