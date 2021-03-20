@@ -1,0 +1,51 @@
+package services
+
+import (
+	"log"
+	"reflect"
+
+	"github.com/alanwade2001/spa-messaging/spa-msg-initiation-instruction/generated/initiation"
+	"github.com/alanwade2001/spa-messaging/spa-msg-initiation-instruction/types"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/bsoncodec"
+	"k8s.io/klog"
+
+	mgo "github.com/alanwade2001/spa-common/mongo"
+)
+
+type Message struct {
+}
+
+func NewMessage() types.MessageAPI {
+	return &Message{}
+}
+
+func (m *Message) Process(body []byte) error {
+	model := new(initiation.InitiationModel)
+	if err := model.UnmarshalJSON(body); err != nil {
+		return err
+	}
+
+	log.Printf("%+v", model)
+
+	structcodec, _ := bsoncodec.NewStructCodec(bsoncodec.JSONFallbackStructTagParser)
+	reg := bson.NewRegistryBuilder().
+		RegisterTypeEncoder(reflect.TypeOf(initiation.InitiationModel{}), structcodec).
+		RegisterTypeDecoder(reflect.TypeOf(initiation.InitiationModel{}), structcodec).Build()
+
+	mongoService := mgo.NewMongoService("mongodb://%s:%s@localhost:27017", "myuser", "mypassword", "test", "Initiations", 20, reg)
+	conn := mongoService.Connect()
+	defer conn.Disconnect()
+
+	result, err := mongoService.GetCollection(conn).InsertOne(conn.Ctx, model)
+
+	if err != nil {
+		klog.Warningf("Could not create Customer: %v", err)
+		return err
+	}
+
+	klog.Infof("result:[%+v]", result)
+	klog.Infof("initiation:[%+v]", model)
+
+	return nil
+}
