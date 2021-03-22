@@ -23,8 +23,9 @@ func main() {
 
 	messagingUrl := viper.GetString("MESSAGE_SERVICE_URI")
 	queueName := viper.GetString("INITIATION_QUEUE")
+	timeout := viper.GetDuration("MESSAGING_TIMEOUT")
 
-	messagingService := services.NewMessaging(messagingUrl, queueName)
+	messagingService := services.NewMessaging(messagingUrl, queueName, timeout)
 
 	if err := messagingService.Connect(); err != nil {
 		failOnError(err, "failed to connect")
