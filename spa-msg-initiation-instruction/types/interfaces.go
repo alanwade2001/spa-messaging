@@ -11,3 +11,8 @@ type MessagingAPI interface {
 type MessageAPI interface {
 	Process(body []byte) error
 }
+
+// ConfigAPI si
+type ConfigAPI interface {
+	Load(configPath string) error
+}

@@ -1,0 +1,17 @@
+FROM golang:alpine AS build
+
+COPY go.mod go.sum /go/src/app/
+
+WORKDIR /go/src/app/
+RUN go mod download
+
+COPY . . 
+RUN go install 
+
+FROM alpine
+
+COPY --from=build /go/bin/spa-msg-initiation-instruction /bin
+COPY app.env /
+
+#RUN ls -ltr /
+CMD ["spa-msg-initiation-instruction"]
